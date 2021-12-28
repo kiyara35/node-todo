@@ -9,6 +9,9 @@ let router = Router()
 const verify = require('../middleware/verify')
 
 router
+    .get('/', async (req,res)=>{
+        res.send('hello')
+    })
     .post('/auth/reg',
         [
             check('email', 'enter correct email')
