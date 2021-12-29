@@ -10,6 +10,9 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/', require('./routes/index'))
+app.listen(PORT, ()=>{
+    console.log('server started')
+})
 
 
 app.use((req, res) => {
