@@ -29,7 +29,7 @@ router
             try {
                 const errors = validationResult(req)
                 if (!errors.isEmpty()) {
-                    return res.status(400).json({message: "error of registration", errors})
+                     res.status(400).json({message: "error of registration", errors})
 
                 }
                 const {name, email, pass} = req.body
