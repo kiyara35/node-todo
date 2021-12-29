@@ -18,8 +18,8 @@ router
         [
             check('email', 'enter correct email')
                 .isEmail(),
-            check('pass', 'length must be at least 4 and no more than 10 characters')
-                .isLength({min: 4, max: 10}),
+            // check('pass', 'length must be at least 4 and no more than 10 characters')
+            //     .isLength({min: 4, max: 10}),
             // check('pass', 'the password must include capital letters, numbers and symbols.')
             //     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i"),
             check('name', 'it can not be empty').notEmpty()
@@ -87,7 +87,8 @@ router
         const todo = {
             title: req.body.title,
             description: req.body.description,
-            user_id: req.user.user_id
+            user_id: req.user.user_id,
+            name:req.body.name
         }
         console.log(todo)
         let newTodo = new Todo(todo)
