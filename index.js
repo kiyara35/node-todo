@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const path = require('path')
-var PORT = process.env.PORT || 5050
+var PORT = process.env.PORT || 5000
 const cors = require('cors')
 
 
