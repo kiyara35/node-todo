@@ -10,10 +10,10 @@ const verify = require('../middleware/verify')
 
 router
     .get('/', async (req, res) => {
-        res.send('hello')
+        res.status(201).send('hello')
     })
     .get('/favicon.ico', async (req, res) => {
-        res.send('hello')
+        res.status(201).send('hello')
     })
 
     .post('/auth/reg',
