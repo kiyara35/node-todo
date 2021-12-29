@@ -15,7 +15,7 @@ router
     .get('/favicon.ico', async (req, res) => {
         res.send('hello')
     })
-    
+
     .post('/auth/reg',
         [
             check('email', 'enter correct email')
