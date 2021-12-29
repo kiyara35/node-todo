@@ -12,9 +12,7 @@ router
     .get('/', async (req, res) => {
         res.status(201).send('hello')
     })
-    .get('/favicon.ico', async (req, res) => {
-        res.status(201).send('favicon')
-    })
+
 
     .post('/reg',
         [

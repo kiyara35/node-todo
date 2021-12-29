@@ -9,15 +9,11 @@ const app = express()
 
 var port = process.env.PORT || 5000
 
-app.listen(port, () => {
-    console.log('server started')
-})
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/', require('./routes/index'))
-app.use('/', express.static(path.join(__dirname, 'testheroku')))
 
 
 app.use((req, res) => {
@@ -30,10 +26,8 @@ const start = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
-        // app.listen(port)
-        // app.listen(port, () => {
-        //     console.log(`server started on port:${port}`)
-        // })
+        app.listen(port)
+
     } catch (e) {
         console.log(e)
     }
