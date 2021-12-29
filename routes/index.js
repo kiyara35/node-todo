@@ -13,7 +13,7 @@ router
         res.status(201).send('hello')
     })
     .get('/favicon.ico', async (req, res) => {
-        res.status(201).send('hello')
+        res.status(201).send('favicon')
     })
 
     .post('/auth/reg',
