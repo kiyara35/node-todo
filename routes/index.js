@@ -16,7 +16,7 @@ router
         res.status(201).send('favicon')
     })
 
-    .post('/auth/reg',
+    .post('/reg',
         [
             check('email', 'enter correct email')
                 .isEmail(),
@@ -57,7 +57,7 @@ router
             }
         })
 
-    .post('/auth/sign-in', async (req, res) => {
+    .post('/sign-in', async (req, res) => {
         try {
             const {email, pass} = req.body
             if (!(email && pass)) {
