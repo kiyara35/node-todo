@@ -9,9 +9,13 @@ let router = Router()
 const verify = require('../middleware/verify')
 
 router
-    .get('/', async (req,res)=>{
+    .get('/', async (req, res) => {
         res.send('hello')
     })
+    .get('/favicon.ico', async (req, res) => {
+        res.send('hello')
+    })
+    
     .post('/auth/reg',
         [
             check('email', 'enter correct email')
@@ -114,9 +118,9 @@ router
             todo.status = true
             await todo.save()
             res.status(201).send({
-               success:{
-                   message: 'todo completed'
-               }
+                success: {
+                    message: 'todo completed'
+                }
             })
         } else {
             res.status(403).send({
@@ -134,9 +138,9 @@ router
             todo.description = data.description
             await todo.save()
             res.status(201).send({
-               success:{
-                   message: 'Todo updated'
-               }
+                success: {
+                    message: 'Todo updated'
+                }
             })
         } else {
             res.status(403).send({
@@ -155,7 +159,7 @@ router
         if (todo.user_id == req.user.user_id) {
             await Todo.findByIdAndDelete(todo_id)
             res.status(201).send({
-                success:{
+                success: {
                     message: 'Todo deleted'
                 }
             })
