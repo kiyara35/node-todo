@@ -7,7 +7,7 @@ const cors = require('cors')
 
 const app = express()
 
-var port = process.env.PORT || 5000
+const port = process.env.PORT || 5000
 
 
 app.use(cors())
@@ -26,6 +26,7 @@ const start = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
+        console.log('Connect db successfully')
         app.listen(port)
 
     } catch (e) {

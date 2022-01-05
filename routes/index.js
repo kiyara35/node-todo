@@ -18,18 +18,18 @@ router
         [
             check('email', 'enter correct email')
                 .isEmail(),
-            // check('pass', 'length must be at least 4 and no more than 10 characters')
-            //     .isLength({min: 4, max: 10}),
-            // check('pass', 'the password must include capital letters, numbers and symbols.')
-            //     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i"),
+            check('pass', 'length must be at least 4 and no more than 10 characters')
+                .isLength({min: 4, max: 10}),
+            check('pass', 'the password must include capital letters, numbers and symbols.')
+                .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i"),
             check('name', 'it can not be empty').notEmpty()
         ],
 
         async (req, res) => {
+            const errors = validationResult(req)
             try {
-                const errors = validationResult(req)
                 if (!errors.isEmpty()) {
-                     res.status(400).json({message: "error of registration", errors})
+                    res.status(400).json({message: "error of registration", errors})
 
                 }
                 const {name, email, pass} = req.body
@@ -79,6 +79,15 @@ router
         }
 
     })
+
+    .get('/user-name', verify, async (req, res) => {
+        const user = await Auth.findById(req.user.user_id)
+        if(user){
+            res.status(200).send({name:user.name})
+        }else{
+            res.status(400).send('can not get name ')
+        }
+    })
     .get('/home', verify, (req, res) => {
         res.status(200).send('welcome')
     })
@@ -88,7 +97,7 @@ router
             title: req.body.title,
             description: req.body.description,
             user_id: req.user.user_id,
-            name:req.body.name
+
         }
         console.log(todo)
         let newTodo = new Todo(todo)
