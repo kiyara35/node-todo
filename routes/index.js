@@ -1,11 +1,11 @@
-const {Router} = require('express')
+const Router = require('express')
 const Auth = require('../model/Auth')
 const Todo = require('../model/Todo')
 const bcrypt = require('bcrypt')
 const {check} = require('express-validator')
 const {validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
-let router = Router()
+let router = new Router()
 const verify = require('../middleware/verify')
 
 router
